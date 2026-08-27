@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#17211f" />
+    <title>Capture canvas — Export Proof</title>
+  </head>
+  <body>
+    <main>
+      <header class="brand">
+        <span class="mark" aria-hidden="true"><i></i></span>
+        <div><strong>Export Proof</strong><small>Local canvas survey</small></div>
+      </header>
+      <section class="intro" aria-labelledby="capture-title">
+        <p class="eyebrow">01 · Set reference</p>
+        <h1 id="capture-title">Capture what you approved</h1>
+        <p>We’ll map visible text and objects in the current canvas, then take a reference image of this viewport.</p>
+      </section>
+      <div id="page-state" class="page-state" aria-live="polite">Checking this tab…</div>
+      <button id="capture" class="primary" type="button" disabled>
+        <span>Capture current canvas</span><span aria-hidden="true">→</span>
+      </button>
+      <p class="hint"><kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> opens this survey. Nothing is uploaded.</p>
+      <a class="open-proof" id="open-proof" href="#">Open last proof workspace</a>
+    </main>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
