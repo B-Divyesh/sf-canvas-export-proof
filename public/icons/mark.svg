@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Export Proof contour mark">
+  <rect width="128" height="128" rx="24" fill="#17211f"/>
+  <g fill="none" stroke="#6fc5d0" stroke-width="4">
+    <path d="M18 64h92M64 18v92" opacity=".5"/>
+    <path d="M64 20c24 0 44 20 44 44s-20 44-44 44-44-20-44-44 20-44 44-44Z"/>
+    <path d="M64 36c16 0 28 12 28 28S80 92 64 92 36 80 36 64s12-28 28-28Z"/>
+  </g>
+  <circle cx="64" cy="64" r="12" fill="#ff8065"/>
+</svg>

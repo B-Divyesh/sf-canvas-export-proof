@@ -1,0 +1,11 @@
+{
+  "slug": "canvas-export-proof",
+  "title": "Export Proof",
+  "territory": "games-creative",
+  "user": "People publishing diagrams, collaborative pixel canvases, and teaching visuals who need confidence that a PNG/PDF export says the same thing as the live canvas.",
+  "smallest_useful_product": "A browser extension that captures a canvas's visible semantic text and bounding boxes, compares them locally with a rendered PNG/PDF, and emits an annotated proof image.",
+  "success_measure": "On a seeded set of 30 export defects, flag at least 25 while producing fewer than three false warnings.",
+  "artifact_class": "browser-extension",
+  "monetization": "freemium",
+  "constraints": "All captures stay local by default; OCR is optional; never bypass application authentication or canvas-origin protections."
+}
