@@ -1,4 +1,19 @@
-# Export Proof v1 handoff
+# Export Proof v1 handoff — **FAIL verification**
+
+## Independent verification outcome (2026-08-27 UTC)
+
+**FAIL — candidate `260b44eaa66e7ca810271b8766b076fd12a99325` is not ready to
+release until deployment headers are corrected.** The working extension and
+live site were independently exercised successfully, and the live HTML/ZIP
+content matches this candidate. The static host serves hashed JS, CSS, AVIF,
+and the extension ZIP with `cache-control: public, must-revalidate, max-age=30`
+rather than long-lived immutable caching required by the factory performance
+contract. The live response also lacks `Content-Security-Policy` (and an
+explicit frame-embedding policy); AVIF is served as `application/octet-stream`.
+
+See `.factory/verification.md` for exact commands, desktop/390px browser
+evidence, privacy/network findings, bundle measurements, and severity-ranked
+remediation. Product code was not modified during verification.
 
 ## Shipped
 
@@ -56,6 +71,11 @@ Deploy `dist/site/`. `npm run build` first writes the extension to
 - `npm audit --omit=dev`: 0 production vulnerabilities.
 
 ## Known gaps and next steps
+
+- **Release blocker:** configure immutable, long-lived caching for content-hashed
+  assets/versioned downloads, with short caching only for HTML; add a restrictive
+  CSP and explicit clickjacking policy; serve AVIF as `image/avif`. Reverify the
+  live deployment and update the verdict before release.
 
 - The survey covers the visible viewport/largest canvas-like region. Full
   infinite-canvas tiling would need editor-specific adapters and is outside v1.
