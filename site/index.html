@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f0e6" />
+    <meta name="description" content="Export Proof compares a live canvas with its PNG or PDF export and marks missing text, clipped ink, and layout drift locally in your browser." />
+    <meta property="og:title" content="Export Proof — Survey your canvas export" />
+    <meta property="og:description" content="Catch changed text, clipped ink, and missing visible objects before you publish." />
+    <title>Export Proof — Compare your live canvas with its export</title>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to main content</a>
+    <div id="offline" class="offline" hidden role="status">You’re offline. The guide is available; checkout needs a connection.</div>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Export Proof home"><img src="/icons/icon-128.png" width="32" height="32" alt="" /><span>Export Proof</span></a>
+      <nav aria-label="Main navigation"><a href="#method">Method</a><a href="#privacy-first">Privacy</a><a href="#pricing">Team pack</a></nav>
+      <a class="nav-download" href="/downloads/export-proof-chrome.zip" download>Download extension</a>
+    </header>
+    <main id="main">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">A local export survey for canvas makers</p>
+          <h1>Your canvas looked right.<br /><em>Did the export?</em></h1>
+          <p class="lede">Catch changed labels, clipped ink, and missing visible objects before your diagram, pixel canvas, or teaching visual leaves the browser.</p>
+          <div class="hero-actions"><a class="primary" href="/downloads/export-proof-chrome.zip" download>Download for Chrome</a><a class="text-link" href="#method">See the three-minute check <span aria-hidden="true">↓</span></a></div>
+          <p class="install-note">Free single-page proofs · Chrome/Edge MV3 · No account</p>
+        </div>
+        <figure class="hero-art">
+          <picture>
+            <source type="image/avif" srcset="/assets/topographic-proof-hero.avif" />
+            <source type="image/webp" srcset="/assets/topographic-proof-hero.webp" />
+            <img src="/assets/topographic-proof-hero.jpg" width="1200" height="800" alt="Two topographic map proofs side by side, with a red survey box marking a clipped shoreline on the export" fetchpriority="high" decoding="async" />
+          </picture>
+          <figcaption><span>Reference A</span><span>Export B · 1 mark</span></figcaption>
+        </figure>
+        <div class="coordinate coordinate-a" aria-hidden="true">37° 14′ / REF</div><div class="coordinate coordinate-b" aria-hidden="true">PROOF / 01</div>
+      </section>
+
+      <section class="trust-strip" aria-label="Product principles"><p><strong>Nothing uploaded</strong><span>Images remain inside your browser</span></p><p><strong>Semantics + pixels</strong><span>Maps visible labels before comparing</span></p><p><strong>Evidence you can save</strong><span>Annotated PNG and JSON report</span></p></section>
+
+      <section class="method" id="method">
+        <div class="section-intro"><p class="eyebrow">A short field procedure</p><h2>Proof the file people will actually see.</h2><p>Export Proof surveys the approved browser view first, then checks the distributed artifact against that map. It never edits your work.</p></div>
+        <ol class="method-list">
+          <li><span class="step-number">01</span><div><h3>Fix the reference</h3><p>Open the exact canvas view you approved. The extension records visible text, accessible object names, bounds, and a screenshot of the largest canvas region.</p></div><span class="map-symbol" aria-hidden="true"></span></li>
+          <li><span class="step-number">02</span><div><h3>Pin the export</h3><p>Drop in a PNG, JPG, WebP, or PDF. The first PDF page is rendered locally; optional OCR only runs when your browser provides an on-device detector.</p></div><span class="map-symbol double" aria-hidden="true"></span></li>
+          <li><span class="step-number">03</span><div><h3>Read the field notes</h3><p>Review numbered marks for frame drift, missing edge detail, changed object shapes, and ink that reaches the crop. Save the annotated proof with your release.</p></div><span class="map-symbol flag" aria-hidden="true"></span></li>
+        </ol>
+      </section>
+
+      <section class="proof-preview" aria-labelledby="preview-title">
+        <div class="preview-copy"><p class="eyebrow">A report, not a mystery score</p><h2 id="preview-title">Every warning points back to a place.</h2><p>The extension records what it compared, why a region was flagged, and how much visible edge detail survived. That makes review faster without pretending automation understands your drawing.</p><ul><li><span>×</span> Missing mapped text or object</li><li><span>△</span> Large local shape or ink change</li><li><span>⌜</span> Crop or page ratio drift</li></ul></div>
+        <div class="preview-card" aria-label="Example proof report">
+          <div class="preview-head"><span class="score">82<small>/100</small></span><div><small>Comparison complete</small><strong>Review 2 marked regions</strong></div></div>
+          <div class="mini-map"><span class="contour c1"></span><span class="contour c2"></span><span class="contour c3"></span><span class="fault f1">1</span><span class="fault f2">2</span></div>
+          <ol><li><span>1</span><div><strong>Text shape changed</strong><small>“Learning objective” retained 48% detail.</small></div></li><li><span>2</span><div><strong>Ink reaches export edge</strong><small>Inspect the crop for clipped strokes.</small></div></li></ol>
+        </div>
+      </section>
+
+      <section class="privacy-section" id="privacy-first">
+        <div class="privacy-map" aria-hidden="true"><span></span><span></span><span></span><i>LOCAL</i></div>
+        <div><p class="eyebrow">Private by construction</p><h2>Your confidential whiteboard stays on your machine.</h2><p>Reference captures, uploaded exports, comparison pixels, and free reports do not leave the extension. There are no analytics SDKs, remote fonts, or image-processing services.</p><dl><div><dt>OCR</dt><dd>Off by default and only offered through a supported local browser API.</dd></div><div><dt>Storage</dt><dd>One reference stays in extension storage until you replace it or remove the extension.</dd></div><div><dt>Permissions</dt><dd>Active-tab access only after you choose the toolbar action; no authentication bypass.</dd></div></dl><a class="text-link" href="/privacy/">Read the privacy note →</a></div>
+      </section>
+
+      <section class="pricing" id="pricing">
+        <div><p class="eyebrow">Free when you publish alone</p><h2>One proof is a product feature.<br />A release checklist is a team feature.</h2></div>
+        <div class="price-sheet">
+          <p class="sheet-label">Team field pack</p><p class="price"><sup>$</sup>39 <small>one time</small></p>
+          <ul><li>Compare up to 10 exports in one pass</li><li>Keep local proof history for handoff</li><li>Download a combined JSON summary</li><li>Free annotated PNG always included</li></ul>
+          <a class="primary wide" href="https://api.sociobot.in/api/v1/products/canvas-export-proof/checkout">Buy Team pack</a>
+          <button id="restore-button" class="restore" type="button">Have a license? Restore it</button>
+          <form id="restore-form" hidden><label for="license">License token</label><div><input id="license" required autocomplete="off" /><button class="secondary" type="submit">Verify</button></div></form>
+          <p id="license-status" class="license-status" aria-live="polite"></p>
+          <small>Sociobot/Dodo is merchant of record. Refunds are handled there and revoke the license automatically. <a href="/terms/">Terms apply.</a></small>
+        </div>
+      </section>
+
+      <section class="install" id="install"><p class="eyebrow">Install in two minutes</p><h2>Load the signed build folder.</h2><ol><li>Download and unzip Export Proof.</li><li>Open <code>chrome://extensions</code> and turn on Developer mode.</li><li>Choose “Load unpacked” and select the unzipped folder.</li></ol><a class="primary" href="/downloads/export-proof-chrome.zip" download>Download Export Proof v1.0</a><p>Store distribution can be added later; this build is the inspectable MV3 package.</p></section>
+    </main>
+    <footer><a class="brand" href="/"><img src="/icons/icon-128.png" width="32" height="32" alt="" /><span>Export Proof</span></a><p>Built for diagrams, pixel canvases, and teaching visuals. Hero artwork was generated for this product with the Param Factory image model.</p><nav aria-label="Legal"><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="https://github.com/B-Divyesh/sf-canvas-export-proof" rel="noreferrer">Source</a></nav></footer>
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>

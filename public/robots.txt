@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://canvas-export-proof.sociobot.in/sitemap.xml

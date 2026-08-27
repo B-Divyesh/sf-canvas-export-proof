@@ -1,0 +1,2 @@
+@import './style.css';
+.legal-page{max-width:840px;margin:0 auto;padding:80px 24px 120px}.legal-page h1{font-size:clamp(44px,7vw,72px)}.legal-page .updated{color:var(--teal);font-weight:700;margin:18px 0 44px}.legal-page h2{font-size:29px;margin:45px 0 12px}.legal-page p,.legal-page li{color:#3d504a;font-size:17px;line-height:1.65}.legal-page li{margin:8px 0}.legal-page .summary{padding:24px;border-left:4px solid var(--signal);background:var(--sheet);font-size:19px;color:var(--ink)}
