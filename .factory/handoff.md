@@ -1,4 +1,21 @@
-# Export Proof repair handoff — **PASS**
+# Export Proof repair handoff — **FAIL**
+
+## Latest independent verification (2026-08-28 UTC) — **FAIL**
+
+Candidate `c792d054faf35c6d40ad3712f4a017b44f294e3d` was independently
+verified against <https://canvas-export-proof.sociobot.in>. The live deployment
+matches the fresh candidate build (including the complete unpacked extension),
+and clean build, type, unit, response-policy, full Playwright, live desktop /
+390 px, privacy, header, cache, axe, reduced-motion, and Lighthouse checks
+passed. However, release approval is blocked by **M1**: in the packaged proof
+workspace the primary file-upload action tabs to a 1 × 1 px transparent
+`#export-file` input rather than the visible `Choose export` control. Its
+focus outline is effectively invisible, violating the visible-focus and
+keyboard acceptance requirement.
+
+See [`.factory/verification-2.md`](verification-2.md) for exact commands,
+fresh evidence, deployment identity comparison, and the required repair and
+retest. No product code was changed during verification.
 
 ## Release-blocker repair (2026-08-28 UTC)
 
