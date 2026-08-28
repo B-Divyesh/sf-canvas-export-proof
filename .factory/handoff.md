@@ -1,6 +1,62 @@
-# Export Proof repair handoff — **FAIL**
+# Export Proof repair handoff — **PASS**
 
-## Latest independent verification (2026-08-28 UTC) — **FAIL**
+## Release-blocker repair (2026-08-28 UTC)
+
+Independent verifier report [`.factory/verification-2.md`](verification-2.md)
+blocked candidate `c792d054faf35c6d40ad3712f4a017b44f294e3d` on M1: Tab focused
+the 1 × 1 px invisible `#export-file` input instead of the visible `Choose
+export` control.
+
+Repair commit `4bce0e99483010e06f72e28f72843cd3df762db1` replaces the label
+with the real `button#choose-export`. The button opens the file picker, the
+native input is removed from the Tab order (`tabindex="-1"`), and it retains an
+explicit accessible name for assistive technology. The shared visible-focus
+rule supplies the button's 3 px `#6FC5D0` outline.
+
+Exact artifact-level regression coverage is in
+[`tests/e2e/extension.spec.ts`](../tests/e2e/extension.spec.ts): against the
+packaged MV3 extension it tabs to the button, confirms focus, its at-least
+44 × 44 px dimensions, the computed 3 px cyan outline, and the input's
+`tabindex=-1`; Enter must open the file chooser and complete the raster and
+PDF proof flow. The same test runs at desktop and 390 × 844.
+
+## Verification — 2026-08-28 UTC
+
+- Clean `npm ci`: passed (412 packages installed). `npm audit --omit=dev
+  --audit-level=high`: **0 production vulnerabilities**. The full dependency
+  audit reports 11 development-only advisories (1 low, 2 moderate, 5 high, 3
+  critical).
+- `npm run check` passed; `npm test` passed **7/7**; `npm run build` produced
+  `.output/chrome-mv3`, the extension ZIP, and `dist/site/`; and
+  `npm run test:response-policy` passed.
+- `npm run test:e2e` passed **10/10**, including the packaged-extension
+  consumer flow, desktop/390 px checks, keyboard upload operation, raster/PDF
+  proof, console/page-error checks, and Axe (zero serious/critical findings).
+  Chromium revision 1234 was provisioned with `npx playwright install
+  chromium` because the fresh lockfile requires it.
+- Live `/opt/fleet/lib/verify-url.sh` passed: HTTP 200 in 1,225 ms,
+  title/lang/one h1/main/alt/button checks clean, no console/page errors, and
+  live SHA-256 for `/`, `/privacy/`, and `/terms/` exactly matched `dist/site/`.
+- Live mobile (390 × 844) smoke saw only the product origin on first load, no
+  horizontal overflow or console errors, and a visible offline notice after
+  the offline event. The extension makes no network request without a stored
+  license; this MV3 extension plus static site has no PWA service worker.
+- Live HTML uses revalidating 300 s cache headers; hashed assets and ZIP use a
+  one-year immutable cache. CSP permits only self plus the Sociobot license
+  API; frame protection, nosniff, strict referrer policy, Permissions-Policy,
+  and `image/avif` are present. Lighthouse mobile scored Performance **100**
+  and Accessibility **100** (LCP 1,487 ms, TBT 0 ms, CLS 0, transfer 88,675 B).
+
+## Deployment
+
+`/opt/fleet/lib/deploy-static.sh canvas-export-proof /work/repo/dist/site`
+successfully deployed Azure deployment `b85243ed-c12e-4b55-ab2d-88639aff5e46`
+to <https://canvas-export-proof.sociobot.in>. The repair commit was pushed to
+`main` before deployment.
+
+## Archived verification history
+
+### Latest independent verification before this repair (2026-08-28 UTC) — **FAIL**
 
 Candidate `c792d054faf35c6d40ad3712f4a017b44f294e3d` was independently
 verified against <https://canvas-export-proof.sociobot.in>. The live deployment
