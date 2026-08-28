@@ -50,6 +50,12 @@ The exact static deployment command is `npm run build`; deploy `dist/site/`.
 Its root contains `index.html`, `/privacy/`, `/terms/`, and the extension zip at
 `/downloads/export-proof-chrome.zip`.
 
+The deploy root also contains the Azure Static Web Apps response policy copied
+from `public/staticwebapp.config.json`. It keeps HTML revalidating, caches
+assets and the packaged extension immutably, sets the security headers, and
+declares AVIF correctly. Run `npm run test:response-policy` after a build to
+validate that deploy artifact.
+
 ## Architecture
 
 - **WXT + TypeScript / MV3**: action popup uses `activeTab` to capture only the
