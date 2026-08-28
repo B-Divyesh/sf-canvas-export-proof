@@ -47,10 +47,10 @@
         </div>
 
         <section class="upload-zone" id="upload-zone" aria-labelledby="upload-title">
-          <input id="export-file" type="file" accept="image/png,image/jpeg,image/webp,application/pdf" />
+          <input id="export-file" type="file" accept="image/png,image/jpeg,image/webp,application/pdf" tabindex="-1" aria-label="Export file" />
           <div class="upload-symbol" aria-hidden="true">↥</div>
           <div><h2 id="upload-title">Pin the exported file here</h2><p>Drop a PNG, JPG, WebP, or the first page of a PDF. Up to 50 MB.</p></div>
-          <label class="file-button" for="export-file">Choose export</label>
+          <button class="file-button" id="choose-export" type="button" aria-controls="export-file">Choose export</button>
           <span id="batch-hint" class="batch-hint">Free proof: one file at a time</span>
         </section>
 

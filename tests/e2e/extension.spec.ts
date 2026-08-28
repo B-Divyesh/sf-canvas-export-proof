@@ -20,13 +20,13 @@ function onePagePdf(): Buffer {
   return Buffer.from(body);
 }
 
-test('packaged extension runs the reference-to-proof flow', async ({}, testInfo) => {
-  test.skip(testInfo.project.name !== 'desktop', 'Extension flow only needs one Chromium run.');
+test('packaged extension keeps the upload action visibly keyboard-operable', async ({}, testInfo) => {
   const userDataDir = await mkdtemp('/tmp/export-proof-extension-');
   const extensionPath = '/work/repo/.output/chrome-mv3';
   const context = await chromium.launchPersistentContext(userDataDir, {
     headless: true,
     executablePath: '/opt/pw-browsers/chromium-1234/chrome-linux64/chrome',
+    viewport: testInfo.project.name === 'mobile-390' ? { width: 390, height: 844 } : undefined,
     args: [`--disable-extensions-except=${extensionPath}`, `--load-extension=${extensionPath}`]
   });
   try {
@@ -60,7 +60,38 @@ test('packaged extension runs the reference-to-proof flow', async ({}, testInfo)
     });
     await page.reload();
     await expect(page.getByText('Approved lesson canvas')).toBeVisible();
-    await page.locator('#export-file').setInputFiles('/work/repo/public/assets/topographic-proof-hero.jpg');
+    await expect(page.getByRole('button', { name: 'Choose export' })).toBeVisible();
+
+    // Regression for M1: keyboard focus must land on the full, visible upload
+    // button rather than the programmatic 1px file input at every viewport.
+    for (let index = 0; index < 6; index++) {
+      await page.keyboard.press('Tab');
+      if (await page.getByRole('button', { name: 'Choose export' }).evaluate((button) => document.activeElement === button)) break;
+    }
+    await expect(page.getByRole('button', { name: 'Choose export' })).toBeFocused();
+    const uploadFocus = await page.getByRole('button', { name: 'Choose export' }).evaluate((button) => {
+      const rect = button.getBoundingClientRect();
+      const style = getComputedStyle(button);
+      return {
+        width: rect.width,
+        height: rect.height,
+        outlineWidth: style.outlineWidth,
+        outlineStyle: style.outlineStyle,
+        outlineColor: style.outlineColor,
+        fileInputTabIndex: (document.querySelector('#export-file') as HTMLInputElement).tabIndex
+      };
+    });
+    expect(uploadFocus.width).toBeGreaterThanOrEqual(44);
+    expect(uploadFocus.height).toBeGreaterThanOrEqual(44);
+    expect(uploadFocus.outlineWidth).toBe('3px');
+    expect(uploadFocus.outlineStyle).toBe('solid');
+    expect(uploadFocus.outlineColor).toBe('rgb(111, 197, 208)');
+    expect(uploadFocus.fileInputTabIndex).toBe(-1);
+    const [chooser] = await Promise.all([
+      page.waitForEvent('filechooser'),
+      page.getByRole('button', { name: 'Choose export' }).press('Enter')
+    ]);
+    await chooser.setFiles('/work/repo/public/assets/topographic-proof-hero.jpg');
     await expect(page.locator('#result')).toBeVisible();
     await expect(page.getByRole('button', { name: 'Save annotated PNG' })).toBeVisible();
     await expect(page.getByRole('button', { name: 'Save JSON report' })).toBeVisible();

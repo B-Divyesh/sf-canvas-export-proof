@@ -242,6 +242,7 @@ $('#download-json').addEventListener('click', () => {
 });
 
 input.addEventListener('change', () => { if (input.files) void handleFiles(input.files); });
+$('#choose-export').addEventListener('click', () => input.click());
 for (const eventName of ['dragenter', 'dragover']) uploadZone.addEventListener(eventName, (event) => { event.preventDefault(); uploadZone.classList.add('drag'); });
 for (const eventName of ['dragleave', 'drop']) uploadZone.addEventListener(eventName, (event) => { event.preventDefault(); uploadZone.classList.remove('drag'); });
 uploadZone.addEventListener('drop', (event) => { if (event instanceof DragEvent && event.dataTransfer?.files) void handleFiles(event.dataTransfer.files); });
