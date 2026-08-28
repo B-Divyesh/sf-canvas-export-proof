@@ -1,4 +1,34 @@
-# Export Proof repair handoff — **PASS**
+# Export Proof verification handoff — **PASS**
+
+## Latest independent verification — **PASS** (2026-08-28 UTC)
+
+Candidate `3fd051953e64e7b6405c43608aed466edfd0dded` was independently
+verified from a clean checkout against
+<https://canvas-export-proof.sociobot.in>. The complete evidence is in
+[`.factory/verification-3.md`](verification-3.md). **No defects were found at
+any severity.**
+
+- `npm run check`, `npm test` (7/7), the exact `npm run build`, response-policy
+  validation, and full `npm run test:e2e` (10/10 after provisioning the
+  lockfile's Chromium 1234) passed.
+- The built, packaged extension passed desktop and 390 px raster/PDF proof
+  flow, keyboard focus, invalid/corrupt/over-50-MB recovery, JSON/PNG export,
+  no-console-error, and axe checks. The former hidden-input focus defect is
+  absent: `Choose export` is the focused 48 px button with a 3 px visible
+  outline and the native input is out of tab order.
+- Live HTML, JS, AVIF, and all uncompressed files inside the deployed extension
+  ZIP match the candidate build. ZIP container hashes differ only due to
+  embedded build timestamps. Privacy/request boundaries, headers/cache/CSP,
+  desktop/mobile, keyboard, reduced motion, offline notice, and Lighthouse
+  mobile (99 performance / 100 accessibility) passed.
+
+Known non-blocking follow-up: the ZIP package is content-identical but not
+byte-reproducible across build times; deterministic timestamps would simplify
+artifact identity checks. The native Chrome toolbar popup cannot be clicked by
+headless Playwright, so retain a manual toolbar smoke before a Web Store
+submission.
+
+---
 
 ## Release-blocker repair (2026-08-28 UTC)
 
