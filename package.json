@@ -11,6 +11,7 @@
     "build:site": "vite build --config site/vite.config.ts",
     "build": "npm run build:extension && npm run package:extension && npm run build:site",
     "test": "vitest run",
+    "test:response-policy": "node scripts/verify-response-policy.mjs",
     "test:e2e": "playwright test",
     "test:watch": "vitest",
     "check": "tsc --noEmit"
