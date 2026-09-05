@@ -1,4 +1,35 @@
-# Export Proof verification handoff — **PASS**
+# Export Proof review handoff — **FAIL**
+
+## Review 1 — **FAIL** (2026-09-05 UTC)
+
+Independent review of implementation candidate
+`4bce0e99483010e06f72e28f72843cd3df762db1` and documentation SHA
+`caddb6ce19a02888b8098fa94acbf0c433324d9c` found **10 findings** and **23
+public claims without required declared tests**. Full evidence is in
+[`review-1.md`](review-1.md).
+
+The release blockers are: a changed label can receive a 100/100 clear result;
+there is no one-click isolated sample; the live $39 Team checkout returns 404;
+and `.factory/claims.json` is absent. Medium findings cover first-screen/plain
+words, the missing designed 404, incomplete metadata/footer structure, a
+hard-coded E2E workspace path, and sub-44-pixel interactive targets. The success
+output also has a singular grammar defect.
+
+Clean `npm test`, type-check, build, response-policy validation, production
+audit, and URL verification passed. The documented `npm run test:e2e` failed
+2 packaged-extension projects from the clean clone because the test points to
+`/work/repo/.output/chrome-mv3`; 8 site projects passed. Fresh desktop/phone
+live checks, Axe, focus, reduced motion, offline notice/recovery, invalid and
+over-limit input recovery, artifact downloads, and invalid-license handling
+otherwise passed. The live site's main files and all 14 unzipped extension
+files match the candidate build.
+
+No product code was changed during this review. The report and handoff are the
+only repository changes.
+
+---
+
+## Previous independent verification — **PASS** (2026-08-28 UTC)
 
 ## Latest independent verification — **PASS** (2026-08-28 UTC)
 
